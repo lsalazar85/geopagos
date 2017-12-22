@@ -1,0 +1,24 @@
+{
+  "name": "geopagos",
+  "version": "1.0.0",
+  "description": "Ejercicio Frontend para Geopagos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lsalazar85/geopagos.git"
+  },
+  "keywords": [
+    "Geopagos",
+    "React",
+    "Landing"
+  ],
+  "author": "Luis Salazar <l_salazar85@icloud.com> (https://www.linkedin.com/in/lsalazar85/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lsalazar85/geopagos/issues"
+  },
+  "homepage": "https://github.com/lsalazar85/geopagos#readme"
+}
