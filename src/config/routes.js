@@ -7,8 +7,8 @@ import Dashboard from '../components/Dashboard';
 export default () => (
   <BrowserRouter>
     <div>
-   	  <Route exact path="/" component={Dashboard} />
-      <Route exact path="/landing" component={Landing} />
+        <Route exact path="/" component={Landing} />
+   	    <Route exact path="/dashboard" component={Dashboard} />
     </div>
   </BrowserRouter>
 );

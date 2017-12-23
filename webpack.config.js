@@ -9,13 +9,11 @@ module.exports = {
   entry: {
     index: ['./src/index.js'],
     vendor: [
-      'babel-polyfill',
       'react',
       'react-dom',
       'react-redux',
       'react-router-dom',
       'redux',
-      'redux-saga',
       'prop-types',
     ],
   },

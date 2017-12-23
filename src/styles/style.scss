@@ -1,3 +1,15 @@
-body {
-	margin: 0 auto;
-}
+//Default styles
+@import 'content';
+
+// Fonts
+@import 'fonts';
+
+// Dashboard Components Styles
+@import 'header';
+@import 'list-component';
+@import "modal";
+@import "buttons";
+
+// Landing styles
+@import 'landing';
+
