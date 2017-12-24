@@ -47,11 +47,11 @@ class ModalComponent extends Component {
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <p>Número de CUIT</p>
-                                                <input type="text"/>
+                                                <input type="number" placeholder="0-00000000-0"/>
                                             </div>
                                             <div className="col-md-6">
                                                 <p>Número de establecimiento</p>
-                                                <input type="text"/>
+                                                <input type="number" placeholder="0000000-0"/>
                                             </div>
                                         </div>
                                     </div>
