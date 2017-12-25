@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ListAlert from '../ListAlert'
+import {Animated} from "react-animated-css";
 
 // UI Component
 const ListComponentUi = () => {
@@ -8,7 +10,7 @@ const ListComponentUi = () => {
                 <div className="row">
                     <div className="list-row">
                         <div className="col-md-1 list-icon">
-                            <img src="/static/images/reject_active.png" alt="Eliminate List"/>
+                            <img src="/static/images/reject_inactive.png" alt="Eliminate List" onClick={this.handleReject}/>
                         </div>
                         <div className="list-padding-a col-md-5">
                             <span className="list-razonSocial">
@@ -33,9 +35,10 @@ const ListComponentUi = () => {
                             <input type="number" placeholder="Nro de Terminal"/>
                         </div>
                         <div className="list-icon col-md-1">
-                            <img src="/static/images/accept_active.png" alt="Eliminate List"/>
+                            <img src="/static/images/accept_active.png" alt="Eliminate List" onClick={this.handleApprove}/>
                         </div>
                     </div>
+                    <ListAlert/>
                 </div>
             </div>
         </div>
@@ -44,6 +47,31 @@ const ListComponentUi = () => {
 
 
 class ListComponent extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+           click: false
+        }
+
+        this.handleApprove = this.handleApprove.bind(this);
+        this.handleReject = this.handleReject.bind(this);
+    }
+
+    //Approve Request Animation
+    handleApprove(){
+        this.setState ({
+            click:true
+        });
+    }
+
+    //Reject Request Animation
+    handleReject(){
+        this.setState ({
+            click:true
+        });
+    }
+
      render() {
          return(
              <ListComponentUi/>

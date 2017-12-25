@@ -96,4 +96,35 @@
     }
 
   }
+
+  .list-row-alert {
+    @extend .list-row;
+    padding-right: 20px;
+    display: none;
+
+    span {
+      display: inline-block;
+    }
+
+    .list-row-alert_msg{
+      border: 1px solid #D20F36;
+      font-size: 16px;
+      color: #333333;
+      padding: 16px;
+      margin-top: 14px;
+
+      .btn-cancel {
+        margin-left: 19%;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      .btn-reject {
+        margin-left: 20px;
+        cursor: pointer;
+        font-family: $bold;
+        color: #D20F36;
+      }
+    }
+  }
 }
