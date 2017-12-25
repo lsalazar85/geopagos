@@ -1,5 +1,6 @@
 // Main Container
 .list-content {
+  overflow: hidden;
 
   // List Container
   .list-row{
@@ -10,6 +11,10 @@
     background-color: $white;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.23);
     margin-top: 20px;
+
+    @media (max-width: 1000px){
+      width: 100%;
+    }
 
     span {
       display: block;
@@ -24,6 +29,10 @@
       font-family: $bold;
       color: $black;
       font-size: 16px;
+
+      @media (max-width: 710px){
+        font-size: 0.8em;
+      }
     }
 
     .list-CUIT {
@@ -93,38 +102,6 @@
 
     .list-padding-b {
       padding-top: 9px;
-    }
-
-  }
-
-  .list-row-alert {
-    @extend .list-row;
-    padding-right: 20px;
-    display: none;
-
-    span {
-      display: inline-block;
-    }
-
-    .list-row-alert_msg{
-      border: 1px solid #D20F36;
-      font-size: 16px;
-      color: #333333;
-      padding: 16px;
-      margin-top: 14px;
-
-      .btn-cancel {
-        margin-left: 19%;
-        cursor: pointer;
-        text-decoration: underline;
-      }
-
-      .btn-reject {
-        margin-left: 20px;
-        cursor: pointer;
-        font-family: $bold;
-        color: #D20F36;
-      }
     }
   }
 }

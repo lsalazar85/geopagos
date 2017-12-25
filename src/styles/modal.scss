@@ -23,8 +23,9 @@
     border-bottom: 1px solid $gray;
   }
 
-  p {
-    font-size: 12px;
+  label {
+    display: block;
+    font-size: 11.5px;
     margin: 0;
     padding-bottom: 10px;
   }
@@ -81,25 +82,12 @@
     padding: 20px 0 33px 0;
 
 
-    a {
-      display: inline-block;
-      text-decoration: none;
-      background: $white;
-      text-align: center;
-      float: left;
-      padding: 8px;
-      text-decoration: none;
+    input {
       @include btn-style;
-
-      span {
-        color: $dark-gray;
-      }
     }
 
-    button {
-      background: transparent;
+    .create-list-btn_b {
       float: right;
-      @include btn-style;
     }
   }
 }

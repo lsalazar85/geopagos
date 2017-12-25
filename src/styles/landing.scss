@@ -9,6 +9,10 @@
     background-size: cover;
     padding: 90px;
 
+    @media(max-width: 992px){
+      height: auto;
+    }
+
     // First Input & Visa Card Image
     .landing-form-a {
       color: $white;
@@ -31,6 +35,10 @@
         background-position: 99% 1px;
         @include webAppearance;
         @include placeholderStyle02;
+
+        @media(max-width: 992px){
+          width: 100%;
+        }
 
         &:focus {
           outline: none;
@@ -66,10 +74,15 @@
         overflow: hidden;
         text-align: right;
 
+        @media (max-width: 992px){
+          margin: 30px 0 30px 0;
+        }
+
         img {
           width: 20%;
           height: auto;
           opacity: 0.21;
+
         }
 
         span {
@@ -88,11 +101,29 @@
           border-radius: 8px;
           background: linear-gradient(138.15deg, #1A56FF 0%, #600FC0 100%);
           box-shadow: 0 3px 16px 0 rgba(0,0,0,0.14);
-          position: relative;
           padding: 18px 33px;
           position: absolute;
           top: 11.4em;
           right: 51px;
+        
+          @media (max-width: 992px) {
+            position: initial;
+            margin: 0 auto;
+            width: 100%;
+            height: auto;
+          }
+
+          &.active {
+            .landing-form-b_formBox-div {
+              input {
+
+              }
+            }
+
+            .form-box-btn {
+              opacity: 1 !important;
+            }
+          }
 
           h3{
             text-transform: uppercase;
@@ -107,7 +138,7 @@
             overflow: hidden;
             margin-bottom: 20px;
 
-            p {
+            label {
               font-size: 13px;
               font-family: $regular;
               margin-bottom: 3px;
@@ -139,6 +170,9 @@
             height: 74px;
             text-align: center;
             background: #F8972E;
+            color: $white;
+            font-size: 20px;
+            font-family: $bold;
             border-bottom-right-radius: 8px;
             border-bottom-left-radius: 8px;
             z-index: 10;
@@ -147,11 +181,11 @@
             left:0;
             bottom: 0;
             cursor: pointer;
+            opacity: 0.09;
 
-            span {
-              color: $white;
-              font-size: 20px;
-              font-family: $bold;
+            @media(max-width: 992px){
+              width: 100%;
+              position: initial;
             }
           }
       }

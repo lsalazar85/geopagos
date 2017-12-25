@@ -40,24 +40,24 @@ class ModalComponent extends Component {
                             <div className="col-md-12">
                                 <form action="">
                                     <div className="razon-social col-md-12">
-                                        <p>Razón Social</p>
-                                        <input type="text" placeholder="ej: Nexus S.A"/>
+                                        <label>Razón Social</label>
+                                        <input type="text" placeholder="ej: Nexus S.A" required/>
                                     </div>
                                     <div className="cuit-establecimiento-content col-md-12">
                                         <div className="row">
                                             <div className="col-md-6">
-                                                <p>Número de CUIT</p>
-                                                <input type="number" placeholder="0-00000000-0"/>
+                                                <label>Número de CUIT</label>
+                                                <input type="number" placeholder="0-00000000-0" required/>
                                             </div>
                                             <div className="col-md-6">
-                                                <p>Número de establecimiento</p>
-                                                <input type="number" placeholder="0000000-0"/>
+                                                <label>Número de establecimiento</label>
+                                                <input type="number" placeholder="0000000-0" required/>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="create-list-btn">
-                                        <a href="javascript:void(0);" onClick={() => this.closeModal()}><span>Cancelar</span></a>
-                                        <button>Crear</button>
+                                        <input type="button" value="Cancelar" onClick={() => this.closeModal()}/>
+                                        <input className="create-list-btn_b" type="submit" value="Enviar"/>
                                     </div>
                                 </form>
                             </div>
