@@ -1,3 +1,3 @@
-import counter from './counter';
+import request from './request';
 
-export { counter };
+export { request };

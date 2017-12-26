@@ -21,6 +21,16 @@ class ModalComponent extends Component {
         });
     }
 
+    onChangeField(e) {
+        this.setState({[e.target.name]: e.target.value});
+    }
+
+    create(e) {
+        e.preventDefault();
+        this.closeModal();
+        this.props.createRequest(this.state); 
+    }
+
     render() {
 
         const addRequestTitleBtn = 'Crear Solicitud';
@@ -41,23 +51,23 @@ class ModalComponent extends Component {
                                 <form action="">
                                     <div className="razon-social col-md-12">
                                         <label>Razón Social</label>
-                                        <input type="text" placeholder="ej: Nexus S.A" required/>
+                                        <input onChange={(e) => this.onChangeField(e)} name="razonSocial" type="text" placeholder="ej: Nexus S.A" required/>
                                     </div>
                                     <div className="cuit-establecimiento-content col-md-12">
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <label>Número de CUIT</label>
-                                                <input type="number" placeholder="0-00000000-0" required/>
+                                                <input type="number" onChange={(e) => this.onChangeField(e)} name="cuit" placeholder="0-00000000-0" required/>
                                             </div>
                                             <div className="col-md-6">
                                                 <label>Número de establecimiento</label>
-                                                <input type="number" placeholder="0000000-0" required/>
+                                                <input type="number" onChange={(e) => this.onChangeField(e)} name="nBuilding" placeholder="0000000-0" required/>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="create-list-btn">
                                         <input type="button" value="Cancelar" onClick={() => this.closeModal()}/>
-                                        <input className="create-list-btn_b" type="submit" value="Enviar"/>
+                                        <input onClick={(e) => this.create(e)} className="create-list-btn_b" type="submit" value="Enviar"/>
                                     </div>
                                 </form>
                             </div>

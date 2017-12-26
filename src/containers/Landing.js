@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as requestActions from '../actions/request';
 
 class Landing extends Component {
 	constructor(props){
@@ -6,19 +9,27 @@ class Landing extends Component {
 
 		this.state = {active: false};
 
-        this.handleActive= this.handleActive.bind(this);
+        this.handleActive = this.handleActive.bind(this);
 	}
 
-    handleActive(){
+    handleActive(e){
 		this.setState({
-			active: true
+			active: e.target.value ? true : false
 		});
+	}
 
-		console.log('click funciona')
+	create(e) {
+		e.preventDefault();
+		if(this.state.active) {
+			this.props.actions.addRequest(this.state, this.props.history.push);
+		}
+	}
+
+	onChangeField(e) {
+		this.setState({[e.target.name]: e.target.value});
 	}
 
 	render() {
-
         return(
 			<div className="landing-content">
 				<form className="landing-form container-fluid">
@@ -27,7 +38,7 @@ class Landing extends Component {
 							<p>
 								Bienvenido.
 							</p>
-							<input type="text" placeholder="Introduce tu nombre" onClick={this.handleActive}/>
+							<input type="text" placeholder="Introduce tu nombre" onChange={(e) => this.handleActive(e)} />
 							<div className="visa-card">
 								<img src="/static/images/visa-card.png" alt="Visa Geopagos"/>
 							</div>
@@ -39,23 +50,23 @@ class Landing extends Component {
 								<span>Solicitudes</span>
 							</div>
                             {/* Form Box Landing */}
-							<div className="landing-form-b_formBox active">
+							<div className={this.state.active ? "landing-form-b_formBox active" : "landing-form-b_formBox" }>
 								<h3>
 									Crea tu primera solicitud
 								</h3>
 								<div className="landing-form-b_formBox-div">
 									<label>Razón Social</label>
-									<input type="text" placeholder="ej: Nexus S.A"/>
+									<input onChange={(e) => this.onChangeField(e)} name="razonSocial" type="text" placeholder="ej: Nexus S.A"/>
 								</div>
 								<div className="landing-form-b_formBox-div">
 									<label>Número de CUIT</label>
-									<input type="number" placeholder="0-00000000-0"/>
+									<input type="number" onChange={(e) => this.onChangeField(e)} name="cuit" placeholder="0-00000000-0"/>
 								</div>
 								<div className="landing-form-b_formBox-div">
 									<label>Número de establecimiento</label>
-									<input type="number" placeholder="0000000-0"/>
+									<input type="number" onChange={(e) => this.onChangeField(e)} name="nBuilding" placeholder="0000000-0"/>
 								</div>
-								<input className="form-box-btn col-md-12" type="submit" value="Crear Solicitud"/>
+								<input onClick={(e) => this.create(e)} className="form-box-btn col-md-12" type="submit" value="Crear Solicitud"/>
 							</div>
 						</div>
 					</div>
@@ -85,5 +96,11 @@ class Landing extends Component {
 	}
 }
 
-export default Landing;
 
+export default connect(state => ({
+
+}),
+dispatch => ({
+  actions: bindActionCreators(requestActions, dispatch),
+}),
+)(Landing);
