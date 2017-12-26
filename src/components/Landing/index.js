@@ -14,7 +14,7 @@ class Landing extends Component {
 			active: true
 		});
 
-		console.log('funciona')
+		console.log('click funciona')
 	}
 
 	render() {
