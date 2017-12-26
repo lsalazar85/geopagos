@@ -14,10 +14,10 @@ class ListAlert extends Component {
                             <span>
                                 ¿Estás seguro de rechazar la solicitud de este comercio?
                             </span>
-                                <span className="btn-cancel">
+                                <span className="btn-cancel" onClick={() => this.props.onDismiss()}>
                                 Cancelar
                             </span>
-                                <span className="btn-reject">
+                                <span onClick={() => this.props.confirmReject()} className="btn-reject">
                                 Rechazar
                             </span>
                             </div>

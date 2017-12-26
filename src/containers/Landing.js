@@ -56,15 +56,15 @@ class Landing extends Component {
 								</h3>
 								<div className="landing-form-b_formBox-div">
 									<label>Razón Social</label>
-									<input onChange={(e) => this.onChangeField(e)} name="razonSocial" type="text" placeholder="ej: Nexus S.A"/>
+									<input onChange={(e) => this.onChangeField(e)} name="razonSocial" type="text" placeholder="ej: Nexus S.A" required />
 								</div>
 								<div className="landing-form-b_formBox-div">
 									<label>Número de CUIT</label>
-									<input type="number" onChange={(e) => this.onChangeField(e)} name="cuit" placeholder="0-00000000-0"/>
+									<input type="number" onChange={(e) => this.onChangeField(e)} name="cuit" placeholder="0-00000000-0" required />
 								</div>
 								<div className="landing-form-b_formBox-div">
 									<label>Número de establecimiento</label>
-									<input type="number" onChange={(e) => this.onChangeField(e)} name="nBuilding" placeholder="0000000-0"/>
+									<input type="number" onChange={(e) => this.onChangeField(e)} name="nBuilding" placeholder="0000000-0" required />
 								</div>
 								<input onClick={(e) => this.create(e)} className="form-box-btn col-md-12" type="submit" value="Crear Solicitud"/>
 							</div>

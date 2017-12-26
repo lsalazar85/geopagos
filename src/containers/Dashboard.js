@@ -9,19 +9,41 @@ import * as requestActions from '../actions/request';
 
 
 class Dashboard extends Component {
+	constructor(props){
+		super(props);
+		this.state = {selected: {}, hasReject: false, confirmReject: false};
+	}
 
 	createRequest(request) {
 		this.props.actions.addRequest(request);
+	
+	}
+
+	approveRequest(request) {
 		console.log(request);
+		this.props.actions.approveRequest(request);
+	}
+
+	rejectRequest(request) {
+		this.setState({hasReject: true, confirmReject: false, selected: request});
+	}
+
+	confirmReject() {
+		setTimeout(() => this.props.actions.rejectRequest(this.state.selected), 500);
+		this.dismissReject();
+		this.setState({confirmReject: true});
+	}
+
+	dismissReject(){
+		this.setState({hasReject: false, confirmReject: false});
 	}
 
 	render() {
-		console.log(this.props);
 		return (
 			<div>
 			  	<Header createRequest={this.createRequest.bind(this)} />
-			  	<ListComponent list={this.props.request.list || []}/>
-				<ListAlert/>
+			  	<ListComponent selected={this.state.selected} confirmReject={this.state.confirmReject} rejectRequest={this.rejectRequest.bind(this)} approveRequest={this.approveRequest.bind(this)} list={this.props.request.list || []}/>
+				{this.state.hasReject ? <ListAlert confirmReject={this.confirmReject.bind(this)} onDismiss={this.dismissReject.bind(this)}/> : <div></div>}
 			  	<Buttons />
 			</div>
 		)

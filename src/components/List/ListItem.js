@@ -11,17 +11,38 @@ class Item extends Component {
     handleApprove(e) {
         e.preventDefault();
         this.setState({hasConfirm: true});
-
+        setTimeout(() => this.props.approveRequest(this.props.item), 500);
     }
+
+    handleReject(item) {
+        this.props.rejectRequest(this.props.item);
+    }
+
+    getClassName(item){
+        console.log(item);
+        const isSelected = item.cuit === this.props.selected.cuit && this.props.confirmReject;
+
+        let classContainer = "list-row ";
+        if (isSelected) {
+            classContainer += "animated fadeOutLeft";
+        }
+
+        if (this.state.hasConfirm) {
+            classContainer += "animated fadeOutRight";
+        }
+        return classContainer;
+    }
+
 
      render() {
         const item = this.props.item;
-        const today = new Date();
+        const date = new Date();
+     
          return(
                 <div className="row">
-                    <div className={this.state.hasConfirm ? "list-row animated fadeOutRight" : "list-row"}>
+                    <div className={this.getClassName(item)}>
                         <div className="col-xs-1 col-sm-1 col-md-1 list-icon">
-                            <img src="/static/images/reject_inactive.png" alt="Eliminate List" onClick={this.handleReject}/>
+                            <img src="/static/images/reject_inactive.png" alt="Eliminate List" onClick={this.handleReject.bind(this)}/>
                         </div>
                         <div className="list-padding-a col-xs-5 col-sm-5 col-md-5">
                             <span className="list-razonSocial">
@@ -39,7 +60,7 @@ class Item extends Component {
                                 {item.nBuilding}
                             </span>
                             <span className="list-date">
-                                {today.getMonth()}
+                               {date.toLocaleDateString()}
                             </span>
                         </div>
                         <div className="list-terminal col-xs-3 col-sm-3 col-md-3">
