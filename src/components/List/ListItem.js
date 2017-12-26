@@ -4,8 +4,10 @@ class Item extends Component {
    constructor(props){
         super(props);
         this.state = {
-            hasConfirm: false
+            hasConfirm: false,
         };
+
+        this.handleURL = this.handleURL.bind(this);
     }
 
     handleApprove(e) {
@@ -16,6 +18,13 @@ class Item extends Component {
 
     handleReject(item) {
         this.props.rejectRequest(this.props.item);
+    }
+
+    handleURL(e){
+        const value=e.target.value.trim()
+        this.setState({
+           url: value ? true : false
+        });
     }
 
     getClassName(item){
@@ -37,6 +46,8 @@ class Item extends Component {
      render() {
         const item = this.props.item;
         const date = new Date();
+        const image = this.state.url ? "/static/images/accept_active.png" : "/static/images/accept_inactive.png";
+    
      
          return(
                 <div className="row">
@@ -64,10 +75,10 @@ class Item extends Component {
                             </span>
                         </div>
                         <div className="list-terminal col-xs-3 col-sm-3 col-md-3">
-                            <input type="number" placeholder="Nro de Terminal"/>
+                            <input type="number" placeholder="Nro de Terminal" onChange={(e) => this.handleURL(e)}/>
                         </div>
                         <div className="list-icon col-xs-1 col-sm-1 col-md-1">
-                            <img src="/static/images/accept_active.png" alt="Eliminate List" onClick={(e) => this.handleApprove(e)}/>
+                            <img src={image} alt="Eliminate List" onClick={(e) => this.handleApprove(e)}/>
                         </div>
                     </div>
                  </div>

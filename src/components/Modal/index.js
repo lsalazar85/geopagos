@@ -5,13 +5,19 @@ class ModalComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            visible : false
+            visible : false,
+            razonSocial: "",
+            cuit: "",
+            nBuilding:""
         }
     }
 
     openModal() {
         this.setState({
-            visible : true
+            visible : true,
+            razonSocial: "",
+            cuit: "",
+            nBuilding:""
         });
     }
 
@@ -28,8 +34,15 @@ class ModalComponent extends Component {
     create(e) {
         e.preventDefault();
         this.closeModal();
-        this.props.createRequest(this.state); 
+        this.props.createRequest(this.state);
+        this.setState({
+            razonSocial: "",
+            cuit: "",
+            nBuilding:""
+        });
     }
+
+
 
     render() {
 
@@ -48,20 +61,20 @@ class ModalComponent extends Component {
                                 </div>
                             </div>
                             <div className="col-md-12">
-                                <form action="">
+                                <form onSubmit={this.handleSubmit} action="">
                                     <div className="razon-social col-md-12">
                                         <label>Razón Social</label>
-                                        <input onChange={(e) => this.onChangeField(e)} name="razonSocial" type="text" placeholder="ej: Nexus S.A" required/>
+                                        <input onChange={(e) => this.onChangeField(e)} name="razonSocial" type="text" placeholder="ej: Nexus S.A" value={this.state.razonSocial} required/>
                                     </div>
                                     <div className="cuit-establecimiento-content col-md-12">
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <label>Número de CUIT</label>
-                                                <input type="number" onChange={(e) => this.onChangeField(e)} name="cuit" placeholder="0-00000000-0" required/>
+                                                <input type="number" onChange={(e) => this.onChangeField(e)} name="cuit" placeholder="0-00000000-0" value={this.state.cuit} required/>
                                             </div>
                                             <div className="col-md-6">
                                                 <label>Número de establecimiento</label>
-                                                <input type="number" onChange={(e) => this.onChangeField(e)} name="nBuilding" placeholder="0000000-0" required/>
+                                                <input type="number" onChange={(e) => this.onChangeField(e)} name="nBuilding" placeholder="0000000-0" value={this.state.nBuilding} required/>
                                             </div>
                                         </div>
                                     </div>
