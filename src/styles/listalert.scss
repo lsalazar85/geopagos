@@ -1,0 +1,47 @@
+
+.list-row-alert{
+  .list-row {
+    width: 802px;
+    height: 83px;
+    margin: 0 auto;
+    border-radius: 4px;
+    background-color: $white;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.23);
+    margin-top: 20px;
+    padding-right: 20px;
+
+    @media (max-width: 1000px){
+      width: 100%;
+    }
+
+    .list-icon {
+      text-align: center;
+      padding-top: 25px;
+
+      img {
+        cursor:pointer;
+      }
+    }
+
+    .list-row-alert_msg{
+      border: 1px solid #D20F36;
+      font-size: 16px;
+      color: #333333;
+      padding: 16px;
+      margin-top: 14px;
+
+      .btn-cancel {
+        margin-left: 10%;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      .btn-reject {
+        margin-left: 20px;
+        cursor: pointer;
+        font-family: $bold;
+        color: #D20F36;
+      }
+    }
+  }
+}

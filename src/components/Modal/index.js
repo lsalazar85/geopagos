@@ -1,0 +1,95 @@
+import React, { Component } from 'react';
+import Modal from 'react-awesome-modal';
+
+class ModalComponent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible : false,
+            razonSocial: "",
+            cuit: "",
+            nBuilding:""
+        }
+    }
+
+    openModal() {
+        this.setState({
+            visible : true,
+            razonSocial: "",
+            cuit: "",
+            nBuilding:""
+        });
+    }
+
+    closeModal() {
+        this.setState({
+            visible : false
+        });
+    }
+
+    onChangeField(e) {
+        this.setState({[e.target.name]: e.target.value});
+    }
+
+    create(e) {
+        e.preventDefault();
+        this.closeModal();
+        this.props.createRequest(this.state);
+        this.setState({
+            razonSocial: "",
+            cuit: "",
+            nBuilding:""
+        });
+    }
+
+
+
+    render() {
+
+        const addRequestTitleBtn = 'Crear Solicitud';
+
+        return (
+            <section>
+                <span  onClick={() => this.openModal()} className="add-request-btn">
+                    <img src="/static/images/add.png" alt=""/> {addRequestTitleBtn}
+                </span>
+                    <Modal visible={this.state.visible} effect="fadeInDown" onClickAway={() => this.closeModal()}>
+                        <div className="ModalComponent-content container-fluid">
+                            <div className="row">
+                                <div className="ModalComponent-title col-md-12">
+                                    <span>{addRequestTitleBtn}</span>
+                                </div>
+                            </div>
+                            <div className="col-md-12">
+                                <form onSubmit={this.handleSubmit} action="">
+                                    <div className="razon-social col-md-12">
+                                        <label>Razón Social</label>
+                                        <input onChange={(e) => this.onChangeField(e)} name="razonSocial" type="text" placeholder="ej: Nexus S.A" value={this.state.razonSocial} required/>
+                                    </div>
+                                    <div className="cuit-establecimiento-content col-md-12">
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <label>Número de CUIT</label>
+                                                <input type="number" onChange={(e) => this.onChangeField(e)} name="cuit" placeholder="0-00000000-0" value={this.state.cuit} required/>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label>Número de establecimiento</label>
+                                                <input type="number" onChange={(e) => this.onChangeField(e)} name="nBuilding" placeholder="0000000-0" value={this.state.nBuilding} required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="create-list-btn">
+                                        <input type="button" value="Cancelar" onClick={() => this.closeModal()}/>
+                                        <input onClick={(e) => this.create(e)} className="create-list-btn_b" type="submit" value="Enviar"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </Modal>
+            </section>
+        );
+    }
+}
+
+
+export default ModalComponent;
