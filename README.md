@@ -1,4 +1,4 @@
-# GeoPagos - Visa Solicitudes
+# Visa Solicitudes
 
 Este proyecto es un gestor de aprobacion de solicitudes desde una landing page.
 
